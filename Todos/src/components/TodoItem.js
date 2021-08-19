@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 
-const TodoItem = ({data}) => {
-  console.log(data)
+const TodoItem = ({data, removeTodo}) => {
   const renderItem = itemdata => (
-    <View style={styles.listItem}>
-      <Text>{itemdata.item.value}</Text>
-    </View>
+    <TouchableOpacity onPress={() => removeTodo(itemdata.item.id)}>
+      <View style={styles.listItem}>
+        <Text>{itemdata.item.value}</Text>
+      </View>
+    </TouchableOpacity>
   );
   return (
     <FlatList
